@@ -1,11 +1,13 @@
-// your code here
+/* global $ */
+'use strict';
 
 function getResults(){
-  $('button').on('submit', function(event) {
+  $('#numberchooser').on('submit', function(event) {
     
-    // also figured out that the find was not selecting the id properly 
+    event.preventDefault();
+  
+    $('.js-results').empty();
     const inputNum = $('#number-choice').val();    
-
     let mathResult = [];
 
     for ( let i = 1; i <= inputNum; i++ ) {
@@ -19,12 +21,11 @@ function getResults(){
         mathResult.push($('<div class="fizz-buzz-item"><span>fizz</span></div>'));
       }
       else {
-        mathResult.push(`<div class="fizz-buzz-item"><span>$(i)</span></div>`);
+        mathResult.push($(`<div class="fizz-buzz-item"><span>$(i)</span></div>`));
       }
     }
-  $('.js-results').append(mathResult); // moved here
-  })
+    
+    $('.js-results').append(mathResult);
+  });
 }
-
-// accidentally put $('.js-results').append(mathResult); here, outside the function
 
